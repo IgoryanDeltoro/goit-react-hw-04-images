@@ -6,7 +6,7 @@ const SearchForm = ({ search, onSubmit, onChange }) => {
     <>
       <form className={css.form} onSubmit={onSubmit}>
         <button type="submit" className={css.button}>
-          <span className={css.buttonLabel}>Search</span>
+          <span className={css.buttonLabel}></span>
         </button>
 
         <input
