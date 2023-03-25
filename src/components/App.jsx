@@ -14,6 +14,7 @@ const App = () => {
   const [searchValue, setSearchValue] = useState('');
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [activeBtn, setactiveBtn] = useState(false);
   const [page, setPage] = useState('');
   const [totalPaginate, setTotalPaginate] = useState(0);
 
@@ -38,6 +39,7 @@ const App = () => {
         toast('Sorry, There are no images!');
       }
       setArticles(prevState => [...prevState, ...response.hits]);
+      setactiveBtn(true);
     } catch (error) {
       console.log(error);
     } finally {
@@ -49,6 +51,7 @@ const App = () => {
     setSearchValue(searchValue);
     setArticles([]);
     setPage(1);
+    setactiveBtn(false);
   };
 
   const hendleOpeningModal = event => {
@@ -78,7 +81,7 @@ const App = () => {
       <ImageGallery articles={articles} />
       <Loading pending={isLoading} />
       {page < totalPaginate && (
-        <> {!isLoading && <Button loadMore={hendleLoadMore} />}</>
+        <> {activeBtn && <Button loadMore={hendleLoadMore} />}</>
       )}
       <ToastContainer />
     </>
