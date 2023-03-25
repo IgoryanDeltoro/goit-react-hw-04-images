@@ -27,6 +27,7 @@ const App = () => {
     if (searchValue !== '') {
       setIsLoading(true);
       hendleRequest();
+      setactiveBtn(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue, page]);
